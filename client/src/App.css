@@ -1,0 +1,358 @@
+/* App.css - Aesthetic Portfolio Theme */
+
+:root {
+  --background-dark: #1a1a2e;
+  --card-bg: rgba(30, 30, 40, 0.9);
+  --input-bg: #2a2a3e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-card: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Global Styles & Dark Background */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-dark);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+/* Animated Background Components */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind the main content */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.floating-orbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px); /* Increased blur for a softer glow */
+}
+
+.orb-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+  top: 10%;
+  left: 10%;
+  opacity: 0.2;
+}
+
+.orb-2 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+  top: 60%;
+  right: 15%;
+  opacity: 0.2;
+}
+
+.orb-3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, var(--accent-green) 0%, transparent 70%);
+  bottom: 20%;
+  left: 60%;
+  opacity: 0.2;
+}
+
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure content is on top of the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main Container (Card) */
+.app-container {
+    background-color: var(--card-bg);
+    padding: 2.5rem 3rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-card);
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+/* Authentication Form */
+.auth-container {
+    padding: 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-form input {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form input::placeholder {
+    color: var(--text-secondary);
+}
+
+.auth-form input:focus {
+    background-color: #3e3e5c;
+    box-shadow: 0 0 0 2px var(--accent-purple);
+}
+
+.auth-form button, .add-button {
+    padding: 1rem;
+    background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-form button:hover, .add-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(168, 192, 255, 0.3);
+}
+
+.toggle-auth-btn {
+    background: none;
+    border: none;
+    color: var(--accent-purple);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.toggle-auth-btn:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #ff6347;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Task Manager Styles */
+.task-manager-container {
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logout-btn {
+    background: #ff6347;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #e74c3c;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.task-input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+}
+
+.task-input:focus {
+    box-shadow: 0 0 0 2px var(--accent-purple);
+}
+
+.add-button {
+    padding: 1rem 1.75rem;
+    background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.add-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(168, 192, 255, 0.3);
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--input-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-item:last-child {
+    margin-bottom: 0;
+}
+
+.task-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.task-item span {
+    flex-grow: 1;
+    text-align: left;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.complete-button, .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.complete-button {
+    color: var(--accent-green);
+}
+
+.delete-button {
+    color: #e74c3c;
+}
+
+.complete-button:hover, .delete-button:hover {
+    transform: scale(1.1);
+}
+
+.empty-message {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 3rem;
+}
+
+/* Add Scrollbar styling for a cleaner look */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: var(--input-bg);
+  border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: #4c51bf;
+  border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: #3f2b96;
+}
