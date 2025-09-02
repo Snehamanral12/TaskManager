@@ -8,7 +8,10 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+// Configure CORS to allow requests from your Netlify frontend
+app.use(cors({
+  origin: "https://task-manager-by-sneha.netlify.app",
+}));
 app.use(express.json());
 
 // MongoDB connection
@@ -26,7 +29,7 @@ const User = mongoose.model("User", userSchema);
 const taskSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   completed: { type: Boolean, default: false },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true } // Link task to a user
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 const Task = mongoose.model("Task", taskSchema);
 
@@ -62,7 +65,7 @@ app.post("/api/auth/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
     user = new User({ username, password: hashedPassword });
     await user.save();
-    
+
     const payload = { user: { id: user.id } };
     jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
       if (err) throw err;
@@ -85,7 +88,7 @@ app.post("/api/auth/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-    
+
     const payload = { user: { id: user.id } };
     jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
       if (err) throw err;
