@@ -10,12 +10,10 @@ const Auth = ({ setToken }) => {
     e.preventDefault();
     setError("");
 
-    // Use the live URL for the deployed backend on Render
-    const backendUrl = "https://taskmanager-wvn3.onrender.com";
-
+    // The backend URL is already correct here
     const url = isLogin
-      ? `${backendUrl}/api/auth/login`
-      : `${backendUrl}/api/auth/register`;
+      ? "https://taskmanager-wvn3.onrender.com/api/auth/login"
+      : "https://taskmanager-wvn3.onrender.com/api/auth/register";
 
     try {
       const res = await fetch(url, {
@@ -27,7 +25,7 @@ const Auth = ({ setToken }) => {
       const data = await res.json();
       if (res.ok) {
         setToken(data.token);
-        localStorage.setItem("token", data.token); // Store token in local storage
+        localStorage.setItem("token", data.token);
       } else {
         setError(data.message);
       }
