@@ -10,9 +10,12 @@ const Auth = ({ setToken }) => {
     e.preventDefault();
     setError("");
 
+    // Use the live URL for the deployed backend on Render
+    const backendUrl = "https://taskmanager-wvn3.onrender.com";
+
     const url = isLogin
-      ? "http://localhost:5000/api/auth/login"
-      : "http://localhost:5000/api/auth/register";
+      ? `${backendUrl}/api/auth/login`
+      : `${backendUrl}/api/auth/register`;
 
     try {
       const res = await fetch(url, {

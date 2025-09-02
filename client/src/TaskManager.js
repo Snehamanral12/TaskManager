@@ -4,10 +4,13 @@ const TaskManager = ({ token, onLogout }) => {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
 
+  // Use the live URL for the deployed backend on Render
+  const backendUrl = "https://taskmanager-wvn3.onrender.com";
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tasks", {
+        const res = await fetch(`${backendUrl}/api/tasks`, {
           headers: { "x-auth-token": token },
         });
         if (res.ok) {
@@ -27,7 +30,7 @@ const TaskManager = ({ token, onLogout }) => {
 
   const addTask = async () => {
     if (!title.trim()) return;
-    const res = await fetch("http://localhost:5000/api/tasks", {
+    const res = await fetch(`${backendUrl}/api/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-auth-token": token },
       body: JSON.stringify({ title }),
@@ -42,7 +45,7 @@ const TaskManager = ({ token, onLogout }) => {
   };
 
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    await fetch(`${backendUrl}/api/tasks/${id}`, {
       method: "DELETE",
       headers: { "x-auth-token": token },
     });
@@ -50,7 +53,7 @@ const TaskManager = ({ token, onLogout }) => {
   };
 
   const toggleComplete = async (id, completed) => {
-    const res = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    const res = await fetch(`${backendUrl}/api/tasks/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", "x-auth-token": token },
       body: JSON.stringify({ completed: !completed }),
